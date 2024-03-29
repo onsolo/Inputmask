@@ -14,6 +14,7 @@
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- d/mm/yyyy is converted to d/m//yyyd #2394
 - Invalid state after editing datetime #2708
 - Inputmask datetime alias mm/yy min value bug #2744
 - ALT codes #2779

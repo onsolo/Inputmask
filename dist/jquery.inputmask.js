@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.59
+ * Version: 5.0.9-beta.60
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(require("jquery")); else if ("function" == typeof define && define.amd) define([ "jquery" ], t); else {
@@ -3138,7 +3138,9 @@
                         var f = t[u];
                         r = s(f, c.length);
                         var d = Math.abs(r - c);
-                        (void 0 === o || "" !== r && d < o || l && !n.greedy && l.match.optionality && l.match.optionality - a > 0 && "master" === l.match.newBlockMarker && (!f.match.optionality || f.match.optionality - a < 1 || !f.match.newBlockMarker) || l && !n.greedy && l.match.optionalQuantifier && !f.match.optionalQuantifier) && (o = d, 
+                        (!0 !== f.unMatchedAlternationStopped || t.filter((function(e) {
+                            return !0 !== e.unMatchedAlternationStopped;
+                        })).length <= 1) && (void 0 === o || "" !== r && d < o || l && !n.greedy && l.match.optionality && l.match.optionality - a > 0 && "master" === l.match.newBlockMarker && (!f.match.optionality || f.match.optionality - a < 1 || !f.match.newBlockMarker) || l && !n.greedy && l.match.optionalQuantifier && !f.match.optionalQuantifier) && (o = d, 
                         l = f);
                     }
                     return l;
@@ -3283,7 +3285,9 @@
                                                 N || y.push(F);
                                             }
                                         }
-                                        v = b.concat(y), h = e, g = v.length > 0 && k, a = y.length > 0 && !k, n = j.slice();
+                                        v = b.concat(y), h = e, g = v.length > 0 && k, a = y.length > 0 && !k, k && g && !a && v.forEach((function(e, t) {
+                                            e.unMatchedAlternationStopped = !0;
+                                        })), n = j.slice();
                                     } else a = f(m.matches[M] || t.matches[M], [ M ].concat(s), p);
                                     if (a) return !0;
                                 }();
@@ -3340,7 +3344,9 @@
                             def: "",
                             placeholder: ""
                         },
-                        locator: k ? [ 0 ] : [],
+                        locator: k && 0 === v.filter((function(e) {
+                            return !0 !== e.unMatchedAlternationStopped;
+                        })).length ? [ 0 ] : [],
                         mloc: {},
                         cd: y
                     }), void 0 !== t && l.tests[e] ? a = s.extend(!0, [], v) : (l.tests[e] = s.extend(!0, [], v), 

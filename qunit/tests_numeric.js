@@ -1419,16 +1419,21 @@ export default function (qunit, Inputmask) {
 	});
 
 	qunit.test("numeric alias - value=\"-1234\" minvalue = 1000", function (assert) {
-		var $fixture = $("#qunit-fixture");
+		var done = assert.async(),
+			$fixture = $("#qunit-fixture");
 		$fixture.append("<input type=\"text\" id=\"testmask\" value=\"-1234\" />");
 		var testmask = document.getElementById("testmask");
+		testmask.focus();
 		Inputmask("numeric", {
 			allowMinus: true,
 			min: 1000,
 			max: 3000
 		}).mask(testmask);
 		testmask.blur();
-		assert.equal(testmask.value, "1000", "Result " + testmask.value);
+		setTimeout(function () {
+			assert.equal(testmask.value, "1000", "Result " + testmask.value);
+			done();
+		}, 100);
 	});
 
 	qunit.test("numeric alias - value=\"-1234\" minvalue = -1000", function (assert) {
@@ -1752,7 +1757,7 @@ export default function (qunit, Inputmask) {
 		var $fixture = $("#qunit-fixture");
 		$fixture.append("<input type=\"text\" id=\"testmask\" />");
 		var testmask = document.getElementById("testmask");
-		Inputmask("currency", { negationSymbol: { front: "(", back: ")" }, prefix: "$ " }).mask(testmask);
+		Inputmask("currency", {negationSymbol: {front: "(", back: ")"}, prefix: "$ "}).mask(testmask);
 		testmask.focus();
 		$.caret(testmask, 1);
 		$("#testmask").Type("-");
@@ -1904,7 +1909,7 @@ export default function (qunit, Inputmask) {
 		var $fixture = $("#qunit-fixture");
 		$fixture.append("<input type=\"text\" id=\"testmask\" />");
 		var testmask = document.getElementById("testmask");
-		Inputmask("currency", { radixPoint: ",", inputType: "number", prefix: "$ " }).mask(testmask);
+		Inputmask("currency", {radixPoint: ",", inputType: "number", prefix: "$ "}).mask(testmask);
 
 		$(testmask).val("100.00");
 
@@ -1933,7 +1938,7 @@ export default function (qunit, Inputmask) {
 		$fixture.append("<input type=\"text\" id=\"testmask\" />");
 		var testmask = document.getElementById("testmask");
 		Inputmask("decimal",
-			{ groupSeparator: "," }).mask(testmask);
+			{groupSeparator: ","}).mask(testmask);
 
 		$(testmask).Type("38800");
 		$.caret(testmask, 3);
@@ -1948,7 +1953,7 @@ export default function (qunit, Inputmask) {
 		$fixture.append("<input type=\"text\" id=\"testmask\" />");
 		var testmask = document.getElementById("testmask");
 		Inputmask("decimal",
-			{ groupSeparator: "," }).mask(testmask);
+			{groupSeparator: ","}).mask(testmask);
 
 		$(testmask).Type("100.");
 		$("#testmask").SendKey(keys.Backspace);
@@ -2300,11 +2305,11 @@ export default function (qunit, Inputmask) {
 		$fixture.append("<input type=\"text\" id=\"testmask\"/>");
 		var testmask = document.getElementById("testmask");
 		Inputmask({
-			alias:                  "numeric",
-			digits:                 2,
-			digitsOptional:         false,
-			positionCaretOnClick:   "select",
-			suffix:                 " €"
+			alias: "numeric",
+			digits: 2,
+			digitsOptional: false,
+			positionCaretOnClick: "select",
+			suffix: " €"
 		}).mask(testmask);
 		testmask.inputmask.setValue(12.36);
 
@@ -2317,7 +2322,7 @@ export default function (qunit, Inputmask) {
 		var testmask = document.getElementById("testmask");
 		Inputmask('numeric',
 			{
-				digits:0,
+				digits: 0,
 				groupSeparator: ',',
 				shortcuts: null,
 			}).mask(testmask);

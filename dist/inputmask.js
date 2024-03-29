@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.59
+ * Version: 5.0.9-beta.60
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(); else if ("function" == typeof define && define.amd) define([], t); else {
@@ -3241,7 +3241,9 @@
                         var f = t[u];
                         r = l(f, c.length);
                         var d = Math.abs(r - c);
-                        (void 0 === o || "" !== r && d < o || s && !n.greedy && s.match.optionality && s.match.optionality - a > 0 && "master" === s.match.newBlockMarker && (!f.match.optionality || f.match.optionality - a < 1 || !f.match.newBlockMarker) || s && !n.greedy && s.match.optionalQuantifier && !f.match.optionalQuantifier) && (o = d, 
+                        (!0 !== f.unMatchedAlternationStopped || t.filter((function(e) {
+                            return !0 !== e.unMatchedAlternationStopped;
+                        })).length <= 1) && (void 0 === o || "" !== r && d < o || s && !n.greedy && s.match.optionality && s.match.optionality - a > 0 && "master" === s.match.newBlockMarker && (!f.match.optionality || f.match.optionality - a < 1 || !f.match.newBlockMarker) || s && !n.greedy && s.match.optionalQuantifier && !f.match.optionalQuantifier) && (o = d, 
                         s = f);
                     }
                     return s;
@@ -3386,7 +3388,9 @@
                                                 N || y.push(F);
                                             }
                                         }
-                                        m = b.concat(y), h = e, g = m.length > 0 && k, a = y.length > 0 && !k, n = j.slice();
+                                        m = b.concat(y), h = e, g = m.length > 0 && k, a = y.length > 0 && !k, k && g && !a && m.forEach((function(e, t) {
+                                            e.unMatchedAlternationStopped = !0;
+                                        })), n = j.slice();
                                     } else a = f(v.matches[_] || t.matches[_], [ _ ].concat(l), p);
                                     if (a) return !0;
                                 }();
@@ -3443,7 +3447,9 @@
                             def: "",
                             placeholder: ""
                         },
-                        locator: k ? [ 0 ] : [],
+                        locator: k && 0 === m.filter((function(e) {
+                            return !0 !== e.unMatchedAlternationStopped;
+                        })).length ? [ 0 ] : [],
                         mloc: {},
                         cd: y
                     }), void 0 !== t && s.tests[e] ? a = l.extend(!0, [], m) : (s.tests[e] = l.extend(!0, [], m), 
