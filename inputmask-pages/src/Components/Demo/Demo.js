@@ -14,6 +14,22 @@ export const Demo = () => {
         maskOptions={{ alias: "datetime", inputFormat: "mm/dd/yyyy" }}
       />
       <DemoMask
+        label="Date:"
+        maskOptions={{
+          alias: "datetime",
+          inputFormat: "dd mmm yyyy",
+          inputmode: "text"
+        }}
+      />
+      <DemoMask
+        label="Date:"
+        maskOptions={{
+          alias: "datetime",
+          inputFormat: "dd mmmm yyyy",
+          inputmode: "text"
+        }}
+      />
+      <DemoMask
         label="Currency:"
         maskOptions={{
           alias: "numeric",

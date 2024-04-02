@@ -6,6 +6,7 @@
 - Add exports field in package.json #2690
 
 ### Updates
+- only apply character substitution on 'human' input - #2765
 - better handle unmatching alternations - #2277
 - datetime alias
   - add support for mmm & mmmm #2751 (WIP)
@@ -14,6 +15,8 @@
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- Unexpected character removed #2765
+- d/mm/yyyy is converted to d/m//yyyd #2394
 - Invalid state after editing datetime #2708
 - Inputmask datetime alias mm/yy min value bug #2744
 - ALT codes #2779

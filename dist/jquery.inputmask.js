@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.60
+ * Version: 5.0.9-beta.61
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(require("jquery")); else if ("function" == typeof define && define.amd) define([ "jquery" ], t); else {
@@ -542,7 +542,7 @@
                                     begin: a,
                                     end: a
                                 } : r.caret.call(s, d);
-                                m = u.substitutes[m] || m, p.writeOutBuffer = !0;
+                                t || (m = u.substitutes[m] || m), p.writeOutBuffer = !0;
                                 var y = l.isValid.call(s, g, m, i, void 0, void 0, void 0, t);
                                 if (!1 !== y && (r.resetMaskSet.call(s, !0), v = void 0 !== y.caret ? y.caret : r.seekNext.call(s, y.pos.begin ? y.pos.begin : y.pos), 
                                 p.p = v), v = u.numericInput && void 0 === y.caret ? r.seekPrevious.call(s, v) : v, 
