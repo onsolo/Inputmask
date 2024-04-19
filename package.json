@@ -1,6 +1,6 @@
 {
   "name": "inputmask",
-  "version": "5.0.9-beta.62",
+  "version": "5.0.9-beta.66",
   "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
   "main": "dist/inputmask.js",
   "exports": {
@@ -46,6 +46,7 @@
   "homepage": "https://github.com/RobinHerbots/Inputmask",
   "devDependencies": {
     "@babel/core": "^7.23.2",
+    "@babel/eslint-parser": "^7.24.1",
     "@babel/plugin-transform-modules-commonjs": "^7.23.0",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
@@ -69,6 +70,15 @@
     "lodash": "^4.17.21",
     "qunit": "^2.20.0",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "prettier": "3.0.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
