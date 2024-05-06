@@ -9,12 +9,14 @@
 - only apply character substitution on 'human' input - #2765
 - better handle unmatching alternations - #2277
 - datetime alias
-  - add support for mmm & mmmm #2751 (WIP)
+  - add support for mmm & mmmm #2751
+  - add custom placeholder support
 - Update IP extension to support greedy option. #2749
 - Properly handle insertMode false in alternation logic.
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- Cursor moves to start when there is a 0 in the decimal, How to stop this behavior? #2784
 - Unexpected character removed #2765
 - d/mm/yyyy is converted to d/m//yyyd #2394
 - Invalid state after editing datetime #2708

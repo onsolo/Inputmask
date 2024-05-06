@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.67
+ * Version: 5.0.9-beta.68
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(); else if ("function" == typeof define && define.amd) define([], t); else {
@@ -3043,64 +3043,63 @@
                         }
                     }
                 }, t.determineLastRequiredPosition = function(e) {
-                    var t, n, i = this, a = i.maskset, l = i.dependencyLib, c = o.getMaskTemplate.call(i, !0, s.call(i), !0, !0), u = c.length, f = s.call(i), p = {}, d = a.validPositions[f], h = void 0 !== d ? d.locator.slice() : void 0;
-                    for (t = f + 1; t < c.length; t++) h = (n = o.getTestTemplate.call(i, t, h, t - 1)).locator.slice(), 
-                    p[t] = l.extend(!0, {}, n);
-                    var v = d && void 0 !== d.alternation ? d.locator[d.alternation] : void 0;
-                    for (t = u - 1; t > f && (((n = p[t]).match.optionality || n.match.optionalQuantifier && n.match.newBlockMarker || v && (v !== p[t].locator[d.alternation] && 1 != n.match.static || !0 === n.match.static && n.locator[d.alternation] && r.checkAlternationMatch.call(i, n.locator[d.alternation].toString().split(","), v.toString().split(",")) && "" !== o.getTests.call(i, t)[0].def)) && c[t] === o.getPlaceholder.call(i, t, n.match)); t--) u--;
+                    var t, n, i = this, a = i.maskset, l = i.dependencyLib, c = s.call(i), u = {}, f = a.validPositions[c], p = o.getMaskTemplate.call(i, !0, s.call(i), !0, !0), d = p.length, h = void 0 !== f ? f.locator.slice() : void 0;
+                    for (t = c + 1; t < p.length; t++) h = (n = o.getTestTemplate.call(i, t, h, t - 1)).locator.slice(), 
+                    u[t] = l.extend(!0, {}, n);
+                    var v = f && void 0 !== f.alternation ? f.locator[f.alternation] : void 0;
+                    for (t = d - 1; t > c && (((n = u[t]).match.optionality || n.match.optionalQuantifier && n.match.newBlockMarker || v && (v !== u[t].locator[f.alternation] && !0 !== n.match.static || !0 === n.match.static && n.locator[f.alternation] && r.checkAlternationMatch.call(i, n.locator[f.alternation].toString().split(","), v.toString().split(",")) && "" !== o.getTests.call(i, t)[0].def)) && p[t] === o.getPlaceholder.call(i, t, n.match)); t--) d--;
                     return e ? {
-                        l: u,
-                        def: p[u] ? p[u].match : void 0
-                    } : u;
+                        l: d,
+                        def: u[d] ? u[d].match : void 0
+                    } : d;
                 }, t.determineNewCaretPosition = function(e, t, n) {
-                    var i = this, a = i.maskset, r = i.opts;
-                    t && (i.isRTL ? e.end = e.begin : e.begin = e.end);
+                    var i, a, r, f = this, p = f.maskset, d = f.opts;
+                    t && (f.isRTL ? e.end = e.begin : e.begin = e.end);
                     if (e.begin === e.end) {
-                        switch (n = n || r.positionCaretOnClick) {
+                        switch (n = n || d.positionCaretOnClick) {
                           case "none":
                             break;
 
                           case "select":
                             e = {
                                 begin: 0,
-                                end: l.call(i).length
+                                end: l.call(f).length
                             };
                             break;
 
                           case "ignore":
-                            e.end = e.begin = u.call(i, s.call(i));
+                            e.end = e.begin = u.call(f, s.call(f));
                             break;
 
                           case "radixFocus":
-                            if (i.clicked > 1 && 0 == a.validPositions.length) break;
+                            if (f.clicked > 1 && 0 === p.validPositions.length) break;
                             if (function(e) {
-                                if ("" !== r.radixPoint && 0 !== r.digits) {
-                                    var t = a.validPositions;
-                                    if (void 0 === t[e] || t[e].input === o.getPlaceholder.call(i, e)) {
-                                        if (e < u.call(i, -1)) return !0;
-                                        var n = l.call(i).indexOf(r.radixPoint);
+                                if ("" !== d.radixPoint && 0 !== d.digits) {
+                                    var t = p.validPositions;
+                                    if (void 0 === t[e] || void 0 === t[e].input) {
+                                        if (e < u.call(f, -1)) return !0;
+                                        var n = l.call(f).indexOf(d.radixPoint);
                                         if (-1 !== n) {
-                                            for (var s = 0, c = t.length; s < c; s++) if (t[s] && n < s && t[s].input !== o.getPlaceholder.call(i, s)) return !1;
+                                            for (var i = 0, a = t.length; i < a; i++) if (t[i] && n < i && t[i].input !== o.getPlaceholder.call(f, i)) return !1;
                                             return !0;
                                         }
                                     }
                                 }
                                 return !1;
                             }(e.begin)) {
-                                var f = l.call(i).join("").indexOf(r.radixPoint);
-                                e.end = e.begin = r.numericInput ? u.call(i, f) : f;
+                                var h = l.call(f).join("").indexOf(d.radixPoint);
+                                e.end = e.begin = d.numericInput ? u.call(f, h) : h;
                                 break;
                             }
 
                           default:
-                            var p = e.begin, d = s.call(i, p, !0), h = u.call(i, -1 !== d || c.call(i, 0) ? d : -1);
-                            if (p <= h) e.end = e.begin = c.call(i, p, !1, !0) ? p : u.call(i, p); else {
-                                var v = a.validPositions[d], m = o.getTestTemplate.call(i, h, v ? v.match.locator : void 0, v), g = o.getPlaceholder.call(i, h, m.match);
-                                if ("" !== g && l.call(i)[h] !== g && !0 !== m.match.optionalQuantifier && !0 !== m.match.newBlockMarker || !c.call(i, h, r.keepStatic, !0) && m.match.def === g) {
-                                    var y = u.call(i, h);
-                                    (p >= y || p === h) && (h = y);
+                            if (i = e.begin, a = s.call(f, i, !0), i <= (r = u.call(f, -1 !== a || c.call(f, 0) ? a : -1))) e.end = e.begin = c.call(f, i, !1, !0) ? i : u.call(f, i); else {
+                                var v = p.validPositions[a], m = o.getTestTemplate.call(f, r, v ? v.match.locator : void 0, v), g = o.getPlaceholder.call(f, r, m.match);
+                                if ("" !== g && l.call(f)[r] !== g && !0 !== m.match.optionalQuantifier && !0 !== m.match.newBlockMarker || !c.call(f, r, d.keepStatic, !0) && m.match.def === g) {
+                                    var y = u.call(f, r);
+                                    (i >= y || i === r) && (r = y);
                                 }
-                                e.end = e.begin = h;
+                                e.end = e.begin = r;
                             }
                         }
                         return e;
@@ -3132,7 +3131,7 @@
                     void 0 === e && (e = -1);
                     for (var l = 0, s = o.length; l < s; l++) o[l] && (t || !0 !== o[l].generatedInput) && (l <= e && (a = l), 
                     l >= e && (r = l));
-                    return -1 === a || a == e ? r : -1 == r || e - a < r - e ? a : r;
+                    return -1 === a || a === e ? r : -1 === r || e - a < r - e ? a : r;
                 }
                 function c(e, t, n) {
                     var i = this, a = this.maskset, r = o.getTestTemplate.call(i, e).match;
