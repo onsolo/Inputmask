@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.68
+ * Version: 5.0.9-beta.69
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(); else if ("function" == typeof define && define.amd) define([], t); else {
@@ -1810,23 +1810,25 @@
                             i.default)(t.radixPoint), ".")), isFinite(n);
                         },
                         onBeforeMask: function(e, t) {
-                            var n = t.radixPoint || ",";
-                            isFinite(t.digits) && (t.digits = parseInt(t.digits)), "number" != typeof e && "number" !== t.inputType || "" === n || (e = e.toString().replace(".", n));
-                            var a = "-" === e.charAt(0) || e.charAt(0) === t.negationSymbol.front, r = e.split(n), o = r[0].replace(/[^\-0-9]/g, ""), l = r.length > 1 ? r[1].replace(/[^0-9]/g, "") : "", s = r.length > 1;
-                            e = o + ("" !== l ? n + l : l);
-                            var c = 0;
-                            if ("" !== n && (c = t.digitsOptional ? t.digits < l.length ? t.digits : l.length : t.digits, 
-                            "" !== l || !t.digitsOptional)) {
-                                var f = Math.pow(10, c || 1);
-                                e = e.replace((0, i.default)(n), "."), isNaN(parseFloat(e)) || (e = (t.roundingFN(parseFloat(e) * f) / f).toFixed(c)), 
-                                e = e.toString().replace(".", n);
+                            var n;
+                            e = null !== (n = e) && void 0 !== n ? n : "";
+                            var a = t.radixPoint || ",";
+                            isFinite(t.digits) && (t.digits = parseInt(t.digits)), "number" != typeof e && "number" !== t.inputType || "" === a || (e = e.toString().replace(".", a));
+                            var r = "-" === e.charAt(0) || e.charAt(0) === t.negationSymbol.front, o = e.split(a), l = o[0].replace(/[^\-0-9]/g, ""), s = o.length > 1 ? o[1].replace(/[^0-9]/g, "") : "", c = o.length > 1;
+                            e = l + ("" !== s ? a + s : s);
+                            var f = 0;
+                            if ("" !== a && (f = t.digitsOptional ? t.digits < s.length ? t.digits : s.length : t.digits, 
+                            "" !== s || !t.digitsOptional)) {
+                                var p = Math.pow(10, f || 1);
+                                e = e.replace((0, i.default)(a), "."), isNaN(parseFloat(e)) || (e = (t.roundingFN(parseFloat(e) * p) / p).toFixed(f)), 
+                                e = e.toString().replace(".", a);
                             }
-                            if (0 === t.digits && -1 !== e.indexOf(n) && (e = e.substring(0, e.indexOf(n))), 
+                            if (0 === t.digits && -1 !== e.indexOf(a) && (e = e.substring(0, e.indexOf(a))), 
                             null !== t.min || null !== t.max) {
-                                var p = e.toString().replace(n, ".");
-                                null !== t.min && p < t.min ? e = t.min.toString().replace(".", n) : null !== t.max && p > t.max && (e = t.max.toString().replace(".", n));
+                                var d = e.toString().replace(a, ".");
+                                null !== t.min && d < t.min ? e = t.min.toString().replace(".", a) : null !== t.max && d > t.max && (e = t.max.toString().replace(".", a));
                             }
-                            return a && "-" !== e.charAt(0) && (e = "-" + e), u(e.toString().split(""), c, t, s).join("");
+                            return r && "-" !== e.charAt(0) && (e = "-" + e), u(e.toString().split(""), f, t, c).join("");
                         },
                         onBeforeWrite: function(e, t, n, a) {
                             function r(e, t) {

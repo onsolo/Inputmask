@@ -2549,4 +2549,13 @@ export default function (qunit, Inputmask) {
       assert.equal(testmask.value, "4", 'Result "' + testmask.value + '"');
     }
   );
+
+  qunit.test("Currency set null value - #2789", function (assert) {
+    const $fixture = $("#qunit-fixture");
+    $fixture.append('<input type="text" id="testmask"/>');
+    const testmask = document.getElementById("testmask");
+    Inputmask("currency").mask(testmask);
+    testmask.value = null;
+    assert.equal(testmask.value, "", 'Result "' + testmask.value + '"');
+  });
 }
