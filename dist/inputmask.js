@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.69
+ * Version: 5.0.9-beta.70
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(); else if ("function" == typeof define && define.amd) define([], t); else {
@@ -1614,7 +1614,7 @@
                 }
                 function d(e, t, n, i, a) {
                     var r = t.buffer ? t.buffer.indexOf(a.radixPoint) : -1, o = (-1 !== r || i && a.jitMasking) && new RegExp(a.definitions[9].validator).test(e);
-                    return a._radixDance && -1 !== r && o && null == t.validPositions[r] ? {
+                    return !i && a._radixDance && -1 !== r && o && null == t.validPositions[r] ? {
                         insert: {
                             pos: r === n ? r + 1 : r,
                             c: a.radixPoint
@@ -3484,41 +3484,43 @@
                 t.revalidateMask = v;
                 var i = n(6030), a = n(2839), r = n(8711), o = n(4713);
                 function l(e, t, n, i, a, s) {
-                    var c, u, p, d, h, v, m, g, y, k, b, x = this, w = this.dependencyLib, P = this.opts, S = x.maskset, O = w.extend(!0, [], S.validPositions), _ = w.extend(!0, {}, S.tests), M = !1, E = !1, j = void 0 !== a ? a : r.getLastValidPosition.call(x);
-                    if (s && (k = s.begin, b = s.end, s.begin > s.end && (k = s.end, b = s.begin)), 
-                    -1 === j && void 0 === a) c = 0, u = (d = o.getTest.call(x, c)).alternation; else for (;j >= 0; j--) if ((p = S.validPositions[j]) && void 0 !== p.alternation) {
-                        if (j <= (e || 0) && d && d.locator[p.alternation] !== p.locator[p.alternation]) break;
-                        c = j, u = S.validPositions[c].alternation, d = p;
+                    var c = this, u = this.dependencyLib, p = this.opts, d = c.maskset;
+                    if (!c.hasAlternator) return !1;
+                    var h, v, m, g, y, k, b, x, w, P, S, O = u.extend(!0, [], d.validPositions), _ = u.extend(!0, {}, d.tests), M = !1, E = !1, j = void 0 !== a ? a : r.getLastValidPosition.call(c);
+                    if (s && (P = s.begin, S = s.end, s.begin > s.end && (P = s.end, S = s.begin)), 
+                    -1 === j && void 0 === a) h = 0, v = (g = o.getTest.call(c, h)).alternation; else for (;j >= 0; j--) if ((m = d.validPositions[j]) && void 0 !== m.alternation) {
+                        if (j <= (e || 0) && g && g.locator[m.alternation] !== m.locator[m.alternation]) break;
+                        h = j, v = d.validPositions[h].alternation, g = m;
                     }
-                    if (void 0 !== u) {
-                        m = parseInt(c), S.excludes[m] = S.excludes[m] || [], !0 !== e && S.excludes[m].push((0, 
-                        o.getDecisionTaker)(d) + ":" + d.alternation);
+                    if (void 0 !== v) {
+                        b = parseInt(h), d.excludes[b] = d.excludes[b] || [], !0 !== e && d.excludes[b].push((0, 
+                        o.getDecisionTaker)(g) + ":" + g.alternation);
                         var T = [], A = -1;
-                        for (h = m; m < r.getLastValidPosition.call(x, void 0, !0) + 1; h++) -1 === A && e <= h && void 0 !== t && (T.push(t), 
-                        A = T.length - 1), (v = S.validPositions[m]) && !0 !== v.generatedInput && (void 0 === s || h < k || h >= b) && T.push(v.input), 
-                        S.validPositions.splice(m, 1);
-                        for (-1 === A && void 0 !== t && (T.push(t), A = T.length - 1); void 0 !== S.excludes[m] && S.excludes[m].length < 10; ) {
-                            for (S.tests = {}, r.resetMaskSet.call(x, !0), M = !0, h = 0; h < T.length && (g = M.caret || 0 == P.insertMode && null != g ? r.seekNext.call(x, g) : r.getLastValidPosition.call(x, void 0, !0) + 1, 
-                            y = T[h], M = f.call(x, g, y, !1, i, !0)); h++) h === A && (E = M), 1 == e && M && (E = {
-                                caretPos: h
+                        for (y = b; b < r.getLastValidPosition.call(c, void 0, !0) + 1; y++) -1 === A && e <= y && void 0 !== t && (T.push(t), 
+                        A = T.length - 1), (k = d.validPositions[b]) && !0 !== k.generatedInput && (void 0 === s || y < P || y >= S) && T.push(k.input), 
+                        d.validPositions.splice(b, 1);
+                        for (-1 === A && void 0 !== t && (T.push(t), A = T.length - 1); void 0 !== d.excludes[b] && d.excludes[b].length < 10; ) {
+                            for (d.tests = {}, r.resetMaskSet.call(c, !0), M = !0, y = 0; y < T.length && (x = M.caret || 0 == p.insertMode && null != x ? r.seekNext.call(c, x) : r.getLastValidPosition.call(c, void 0, !0) + 1, 
+                            w = T[y], M = f.call(c, x, w, !1, i, !0)); y++) y === A && (E = M), 1 == e && M && (E = {
+                                caretPos: y
                             });
                             if (M) break;
-                            if (r.resetMaskSet.call(x), d = o.getTest.call(x, m), S.validPositions = w.extend(!0, [], O), 
-                            S.tests = w.extend(!0, {}, _), !S.excludes[m]) {
-                                E = l.call(x, e, t, n, i, m - 1, s);
+                            if (r.resetMaskSet.call(c), g = o.getTest.call(c, b), d.validPositions = u.extend(!0, [], O), 
+                            d.tests = u.extend(!0, {}, _), !d.excludes[b]) {
+                                E = l.call(c, e, t, n, i, b - 1, s);
                                 break;
                             }
-                            if (null != d.alternation) {
-                                var D = (0, o.getDecisionTaker)(d);
-                                if (-1 !== S.excludes[m].indexOf(D + ":" + d.alternation)) {
-                                    E = l.call(x, e, t, n, i, m - 1, s);
+                            if (null != g.alternation) {
+                                var D = (0, o.getDecisionTaker)(g);
+                                if (-1 !== d.excludes[b].indexOf(D + ":" + g.alternation)) {
+                                    E = l.call(c, e, t, n, i, b - 1, s);
                                     break;
                                 }
-                                for (S.excludes[m].push(D + ":" + d.alternation), h = m; h < r.getLastValidPosition.call(x, void 0, !0) + 1; h++) S.validPositions.splice(m);
-                            } else delete S.excludes[m];
+                                for (d.excludes[b].push(D + ":" + g.alternation), y = b; y < r.getLastValidPosition.call(c, void 0, !0) + 1; y++) d.validPositions.splice(b);
+                            } else delete d.excludes[b];
                         }
                     }
-                    return E && !1 === P.keepStatic || delete S.excludes[m], E;
+                    return E && !1 === p.keepStatic || delete d.excludes[b], E;
                 }
                 function s(e, t, n) {
                     var i = this.opts, r = this.maskset;

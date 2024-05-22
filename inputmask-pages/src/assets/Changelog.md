@@ -16,6 +16,7 @@
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- TypeError: Cannot read properties of null (reading 'charAt') at m.onBeforeMask #2789
 - Cursor moves to start when there is a 0 in the decimal, How to stop this behavior? #2784
 - Unexpected character removed #2765
 - d/mm/yyyy is converted to d/m//yyyd #2394
