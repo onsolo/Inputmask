@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.9-beta.70
+ * Version: 5.0.9-beta.71
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(require("jquery")); else if ("function" == typeof define && define.amd) define([ "jquery" ], t); else {
@@ -1554,7 +1554,7 @@
                             }(t, n, c, r, a), "-" === n || n === a.negationSymbol.front) {
                                 if (!0 !== a.allowMinus) return !1;
                                 var d = !1, h = p("+", r), m = p("-", r);
-                                return -1 !== h && (d = [ h, m ]), !1 !== d ? {
+                                return -1 !== h && (d = [ h ], -1 !== m && d.push(m)), !1 !== d ? {
                                     remove: d,
                                     caret: u - a.negationSymbol.back.length
                                 } : {
@@ -3010,7 +3010,7 @@
                 }, t.getLastValidPosition = l, t.isMask = c, t.resetMaskSet = function(e) {
                     var t = this.maskset;
                     t.buffer = void 0, !0 !== e && (t.validPositions = [], t.p = 0);
-                    !1 === e && (t.tests = {});
+                    !1 === e && (t.tests = {}, t.jitOffset = {});
                 }, t.seekNext = u, t.seekPrevious = function(e, t) {
                     var n = this, i = e - 1;
                     if (e <= 0) return 0;

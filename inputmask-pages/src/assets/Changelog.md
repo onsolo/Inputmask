@@ -16,6 +16,8 @@
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- Input freezes after changing decimal value symbol twice #2731
+- Poor performance on decimal input mask #1505
 - TypeError: Cannot read properties of null (reading 'charAt') at m.onBeforeMask #2789
 - Cursor moves to start when there is a 0 in the decimal, How to stop this behavior? #2784
 - Unexpected character removed #2765
