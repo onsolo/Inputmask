@@ -1,6 +1,6 @@
 # Change Log
 
-## [5.0.9 - UNRELEASED]
+## [5.0.9 - 31/05/2024]
 
 ### Addition
 - Add exports field in package.json #2690

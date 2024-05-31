@@ -16,6 +16,7 @@
 - Enhance resolving of the ndxInitializer to determine the alternating tests.
 
 ### Fixed
+- Two-character time marker AM or PM doesn't work #2794
 - Input freezes after changing decimal value symbol twice #2731
 - Poor performance on decimal input mask #1505
 - TypeError: Cannot read properties of null (reading 'charAt') at m.onBeforeMask #2789
