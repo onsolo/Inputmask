@@ -3,7 +3,7 @@
  * https://github.com/RobinHerbots/Inputmask
  * Copyright (c) 2010 - 2024 Robin Herbots
  * Licensed under the MIT license
- * Version: 5.0.10-beta.0
+ * Version: 5.0.10-beta.1
  */
 !function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t(); else if ("function" == typeof define && define.amd) define([], t); else {
@@ -1778,15 +1778,15 @@
                                 rewritePosition: t
                             };
                         },
-                        postValidation: function(e, t, n, i, a, r, o) {
+                        postValidation: function(e, t, n, i, a, r, o, l, c) {
                             if (!1 === i) return i;
                             if (o) return !0;
                             if (null !== a.min || null !== a.max) {
-                                var l = a.onUnMask(e.slice().reverse().join(""), void 0, s.extend({}, a, {
+                                var f = a.onUnMask(e.slice().reverse().join(""), void 0, s.extend({}, a, {
                                     unmaskAsNumber: !0
                                 }));
-                                if (null !== a.min && l < a.min && (l.toString().length > a.min.toString().length || l < 0)) return !1;
-                                if (null !== a.max && l > a.max) return !!a.SetMaxOnOverflow && {
+                                if (null !== a.min && f < a.min && !0 !== c && (f.toString().length > a.min.toString().length || e[0] === a.radixPoint || f < 0)) return !1;
+                                if (null !== a.max && f > a.max) return !!a.SetMaxOnOverflow && {
                                     refreshFromBuffer: !0,
                                     buffer: u(a.max.toString().replace(".", a.radixPoint).split(""), a.digits, a).reverse()
                                 };
@@ -3639,7 +3639,7 @@
                         });
                     }
                     if ("function" == typeof k.postValidation && !0 !== i && !0 !== p) {
-                        var A = k.postValidation.call(g, r.getBuffer.call(g, !0), void 0 !== e.begin ? g.isRTL ? e.end : e.begin : e, t, S, k, b, n, m);
+                        var A = k.postValidation.call(g, r.getBuffer.call(g, !0), void 0 !== e.begin ? g.isRTL ? e.end : e.begin : e, t, S, k, b, n, m, a);
                         void 0 !== A && (S = !0 === A ? S : A);
                     }
                     S && void 0 === S.pos && (S.pos = x), !1 === S || !0 === p ? (r.resetMaskSet.call(g, !0), 
