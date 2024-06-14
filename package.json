@@ -1,5 +1,5 @@
 {
-  "name": "inputmask",
+  "name": "bitweb-inputmask",
   "version": "5.0.10-beta.1",
   "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
   "main": "dist/inputmask.js",
