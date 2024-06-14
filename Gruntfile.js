@@ -64,9 +64,6 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-    eslint: {
-      target: "lib/*.js"
-    },
     availabletasks: {
       tasks: {
         options: {
